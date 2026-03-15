@@ -1,5 +1,7 @@
 ﻿(function () {
   const DB_KEY = "portfolio_json_db_v1";
+  const VERSION_KEY = "portfolio_site_version";
+  const SITE_VERSION = "2026-03-15-1";
   const COLLECTIONS = ["skills", "projects", "certificates", "achievements", "interests"];
 
   const defaultDb = {
@@ -233,7 +235,16 @@
     return result;
   }
 
+  function ensureSiteVersion() {
+    const storedVersion = localStorage.getItem(VERSION_KEY);
+    if (storedVersion !== SITE_VERSION) {
+      localStorage.removeItem(DB_KEY);
+      localStorage.setItem(VERSION_KEY, SITE_VERSION);
+    }
+  }
+
   function ensureLocalDatabase() {
+    ensureSiteVersion();
     const existing = localStorage.getItem(DB_KEY);
     if (!existing) {
       localStorage.setItem(DB_KEY, JSON.stringify(cloneDefault()));
