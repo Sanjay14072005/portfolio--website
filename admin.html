@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="singularity-wrap" aria-hidden="true">
+    <div class="singularity"></div>
+  </div>
+
+  <main class="admin-wrap">
+    <section class="admin-card" id="loginSection">
+      <h1>Admin Login</h1>
+      <p>Only admin can add/update/delete portfolio data. Public site has no admin controls.</p>
+      <form id="loginForm" class="admin-form">
+        <label>
+          <span>Email</span>
+          <input id="adminEmail" type="email" required placeholder="admin@example.com">
+        </label>
+        <label>
+          <span>Password</span>
+          <input id="adminPassword" type="password" required placeholder="••••••••">
+        </label>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+      <p id="loginMsg" class="admin-msg"></p>
+      <p class="meta-text" id="configHint">Set credentials in <code>admin-config.js</code>.</p>
+    </section>
+
+    <section class="admin-card hidden" id="panelSection">
+      <div class="admin-topbar">
+        <h1>Portfolio CMS (JSON)</h1>
+        <button id="logoutBtn" class="btn-outline" type="button">Logout</button>
+      </div>
+      <p class="admin-msg" id="panelMsg"></p>
+
+      <div class="admin-tools">
+        <button id="exportDbBtn" type="button" class="btn-outline">Export JSON</button>
+        <label class="file-btn">
+          Import JSON
+          <input id="importDbFile" type="file" accept="application/json">
+        </label>
+      </div>
+
+      <div class="admin-grid">
+        <article class="admin-block">
+          <h2>Add Skill Card</h2>
+          <form id="skillForm" class="admin-form">
+            <label>
+              <span>Category</span>
+              <input name="category" required placeholder="Machine Learning">
+            </label>
+            <label>
+              <span>Tags (comma separated)</span>
+              <input name="tags" required placeholder="Linear Regression, NumPy, Evaluation">
+            </label>
+            <div class="admin-form-actions">
+              <button id="skillSubmitBtn" type="submit" class="btn-primary">Add Skill</button>
+              <button id="skillCancelBtn" type="button" class="btn-outline hidden">Cancel Edit</button>
+            </div>
+          </form>
+          <div id="skillsAdminList" class="admin-list"></div>
+        </article>
+
+        <article class="admin-block">
+          <h2>Add Project</h2>
+          <form id="projectForm" class="admin-form">
+            <input type="hidden" name="editId" value="">
+            <label>
+              <span>Title</span>
+              <input name="title" required placeholder="RAG-Based Chatbot">
+            </label>
+            <label>
+              <span>Description</span>
+              <textarea name="description" rows="3" required placeholder="Project summary"></textarea>
+            </label>
+            <label>
+              <span>Tech Stack</span>
+              <input name="stack" placeholder="Python, Llama 3, Vector DB">
+            </label>
+            <label>
+              <span>Project Link (optional)</span>
+              <input name="link" type="url" placeholder="https://...">
+            </label>
+            <label>
+              <span>Project Image (optional)</span>
+              <input name="imageFile" type="file" accept="image/*">
+            </label>
+            <p class="meta-text">While editing: upload a new image only if you want to replace current image.</p>
+            <div class="admin-form-actions">
+              <button id="projectSubmitBtn" type="submit" class="btn-primary">Add Project</button>
+              <button id="projectCancelBtn" type="button" class="btn-outline hidden">Cancel Edit</button>
+            </div>
+          </form>
+          <div id="projectsAdminList" class="admin-list"></div>
+        </article>
+
+        <article class="admin-block">
+          <h2>Add Certificate</h2>
+          <form id="certificateForm" class="admin-form">
+            <label>
+              <span>Certificate Name</span>
+              <input name="title" required placeholder="AWS Cloud Practitioner">
+            </label>
+            <label>
+              <span>Issuer</span>
+              <input name="issuer" required placeholder="Amazon Web Services">
+            </label>
+            <label>
+              <span>Year</span>
+              <input name="year" placeholder="2026">
+            </label>
+            <label>
+              <span>Verification Link (optional)</span>
+              <input name="link" type="url" placeholder="https://...">
+            </label>
+            <label>
+              <span>Certificate Image (optional)</span>
+              <input name="imageFile" type="file" accept="image/*">
+            </label>
+            <p class="meta-text">While editing: upload a new image only if you want to replace current image.</p>
+            <div class="admin-form-actions">
+              <button id="certificateSubmitBtn" type="submit" class="btn-primary">Add Certificate</button>
+              <button id="certificateCancelBtn" type="button" class="btn-outline hidden">Cancel Edit</button>
+            </div>
+          </form>
+          <div id="certificatesAdminList" class="admin-list"></div>
+        </article>
+
+        <article class="admin-block">
+          <h2>Add Achievement</h2>
+          <form id="achievementForm" class="admin-form">
+            <label>
+              <span>Achievement Title</span>
+              <input name="title" required placeholder="Machine Learning Contest Winner - Institute Name">
+            </label>
+            <label>
+              <span>Description</span>
+              <textarea name="description" rows="4" required placeholder="What did you achieve and why it matters"></textarea>
+            </label>
+            <div class="admin-form-actions">
+              <button id="achievementSubmitBtn" type="submit" class="btn-primary">Add Achievement</button>
+              <button id="achievementCancelBtn" type="button" class="btn-outline hidden">Cancel Edit</button>
+            </div>
+          </form>
+          <div id="achievementsAdminList" class="admin-list"></div>
+        </article>
+
+        <article class="admin-block">
+          <h2>Add Interest</h2>
+          <form id="interestForm" class="admin-form">
+            <label>
+              <span>Interest</span>
+              <input name="title" required placeholder="Artificial Intelligence">
+            </label>
+            <div class="admin-form-actions">
+              <button id="interestSubmitBtn" type="submit" class="btn-primary">Add Interest</button>
+              <button id="interestCancelBtn" type="button" class="btn-outline hidden">Cancel Edit</button>
+            </div>
+          </form>
+          <div id="interestsAdminList" class="admin-list"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin-config.js?v=20260315static4"></script>
+  <script src="data-store.js?v=20260315static4"></script>
+  <script src="admin.js?v=20260315static4"></script>
+</body>
+</html>

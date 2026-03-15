@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saran | AI & ML Portfolio</title>
+  <title>Sanjay | AI/ML Portfolio</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZX0GX2K9LG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-ZX0GX2K9LG");
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="singularity-wrap" aria-hidden="true">
+    <div class="singularity"></div>
+  </div>
   <div class="bg-glow bg-glow-left"></div>
   <div class="bg-glow bg-glow-right"></div>
 
@@ -17,8 +30,8 @@
     <div class="brand">
       <span class="brand-icon">&gt;_</span>
       <div>
-        <p class="brand-name">SARAN</p>
-        <p class="brand-role">AI/ML ARCHITECT</p>
+        <p class="brand-name">SANJAY</p>
+        <p class="brand-role">AIML STUDENT</p>
       </div>
     </div>
 
@@ -29,24 +42,24 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#interests">Interests</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <a class="btn-outline resume-btn" href="#">Resume</a>
   </header>
 
   <main id="home" class="hero">
     <section class="hero-left">
       <p class="status-pill">Open to Opportunities</p>
       <p class="intro-line">Hello, I'm</p>
-      <h1>SARAN</h1>
-      <p class="typing-text"><span id="typingText">AI & ML Engineer</span></p>
+      <h1>SANJAY</h1>
+      <p class="typing-text"><span id="typingText">AIML Engineer</span></p>
 
       <p class="hero-copy">
-        BTech student specializing in <strong>AI & Machine Learning</strong> at Panimalar Engineering College.
-        Building enterprise-ready solutions through automation, deep learning, and scalable cloud architecture.
-        <strong>Oracle, IBM & AWS Certified.</strong>
+        AIML student passionate about building real-world AI systems and solving complex problems using
+        Machine Learning, Deep Learning, and scalable software engineering practices. Focused on becoming
+        industry-ready for AI roles through strong fundamentals, projects, and continuous learning.
       </p>
 
       <div class="hero-actions">
@@ -56,19 +69,19 @@
 
       <div class="quick-cards">
         <article>
-          <p class="emoji">🏆</p>
-          <h3>5+</h3>
-          <p>Certifications</p>
+          <p class="emoji">&#127942;</p>
+          <h3 id="heroSolvedCount">800+</h3>
+          <p>LeetCode Problems Solved</p>
         </article>
         <article>
-          <p class="emoji">💼</p>
-          <h3>10+</h3>
-          <p>Projects Built</p>
+          <p class="emoji">&#128188;</p>
+          <h3>4</h3>
+          <p>AI &amp; Software Projects</p>
         </article>
         <article>
-          <p class="emoji">🚀</p>
-          <h3>AI First</h3>
-          <p>Builder Mindset</p>
+          <p class="emoji">&#128640;</p>
+          <h3>AI-Focused</h3>
+          <p>Problem Solver Mindset</p>
         </article>
       </div>
     </section>
@@ -83,68 +96,158 @@
     </aside>
   </main>
 
+  <section id="leetcode" class="content-section leetcode-section">
+    <h2 class="section-title">Leetcode activity</h2>
+    <p class="skills-intro">
+      Live profile data for <strong id="leetcodeUserLabel">Sanjay_147</strong>:
+      solved counts by difficulty + submission heatmap.
+    </p>
+
+    <div class="leetcode-toolbar">
+      <label for="leetcodeRangeSelect">View</label>
+      <select id="leetcodeRangeSelect" class="leetcode-range-select">
+        <option value="current">Current</option>
+      </select>
+    </div>
+
+    <div class="leetcode-stats" id="leetcodeStats">
+      <article class="leetcode-stat easy">
+        <p class="label">Easy</p>
+        <h3 id="easySolved">--</h3>
+      </article>
+      <article class="leetcode-stat medium">
+        <p class="label">Medium</p>
+        <h3 id="mediumSolved">--</h3>
+      </article>
+      <article class="leetcode-stat hard">
+        <p class="label">Hard</p>
+        <h3 id="hardSolved">--</h3>
+      </article>
+      <article class="leetcode-stat total">
+        <p class="label">Total Solved</p>
+        <h3 id="totalSolved">--</h3>
+      </article>
+      <article class="leetcode-stat streak">
+        <p class="label">Max Streak</p>
+        <h3 id="maxStreak">--</h3>
+      </article>
+    </div>
+
+    <div class="heatmap-shell">
+      <div id="leetcodeHeatmap" class="heatmap-grid"></div>
+      <div id="leetcodeStatus" class="leetcode-status">Loading live LeetCode data...</div>
+    </div>
+  </section>
+
   <section id="about" class="content-section">
     <h2>About Me</h2>
     <p>
-      I focus on designing practical AI systems that solve real problems. My interests include machine learning,
-      backend automation, and cloud-native deployment workflows.
+      AIML undergraduate student at Panimalar Engineering College, focused on becoming an industry-ready AI/ML Engineer
+      capable of building practical and scalable intelligent systems.
+    </p>
+    <p>
+      My journey into technology began with learning Java and strengthening my problem-solving skills through Data Structures
+      and Algorithms. I actively practiced coding on platforms like LeetCode, which helped me develop algorithmic thinking,
+      logical reasoning, and disciplined learning habits.
+    </p>
+    <p>
+      Later, I transitioned into Machine Learning, where I started learning Python and implementing fundamental algorithms
+      such as Linear Regression and Logistic Regression. As my interest grew, I explored deeper areas including Deep Learning
+      and Large Language Models, aiming to understand how modern AI systems are designed and applied in real-world scenarios.
+    </p>
+    <p>
+      Currently, I am preparing for entry-level Machine Learning roles by building practical projects, improving my mathematical
+      foundations, participating in coding challenges, and learning cloud platforms to deploy machine learning models in
+      production-like environments. My goal is to contribute to impactful AI products and continuously grow as a strong
+      engineering professional.
     </p>
   </section>
 
   <section id="skills" class="content-section">
-    <h2>Skills</h2>
-    <div class="chip-grid">
-      <span>Python</span>
-      <span>Machine Learning</span>
-      <span>Deep Learning</span>
-      <span>TensorFlow</span>
-      <span>PyTorch</span>
-      <span>Flask</span>
-      <span>FastAPI</span>
-      <span>AWS</span>
-      <span>Oracle Cloud</span>
-      <span>IBM Cloud</span>
-      <span>SQL</span>
-      <span>GitHub Actions</span>
-    </div>
+    <h2 class="section-title">Skill Galaxy</h2>
+    <p class="skills-intro">A practical toolkit I use to build, learn, and ship AI-focused projects.</p>
+    <div id="skillsContainer" class="skills-galaxy"></div>
   </section>
 
   <section id="projects" class="content-section">
     <h2>Featured Projects</h2>
-    <div class="project-grid">
-      <article>
-        <h3>Smart Student Assistant</h3>
-        <p>AI assistant for answering academic queries with NLP and context-aware retrieval.</p>
-      </article>
-      <article>
-        <h3>Vision Attendance System</h3>
-        <p>Face-recognition powered attendance pipeline with secure cloud logging.</p>
-      </article>
-      <article>
-        <h3>Resume Analyzer</h3>
-        <p>ML-based scoring engine to match resumes against role requirements.</p>
-      </article>
-    </div>
+    <div id="projectsContainer" class="project-grid"></div>
   </section>
 
-  <section id="certifications" class="content-section">
-    <h2>Certifications</h2>
-    <ul class="cert-list">
-      <li>AWS Cloud Practitioner</li>
-      <li>Oracle Cloud Infrastructure Foundations</li>
-      <li>IBM AI Engineering</li>
-    </ul>
+  <section id="certificates" class="content-section">
+    <h2>Certificates</h2>
+    <div id="certificatesContainer" class="certificate-grid"></div>
+  </section>
+
+  <section id="achievements" class="content-section">
+    <h2>Achievements / Experience</h2>
+    <div id="achievementsContainer" class="achievement-grid"></div>
+  </section>
+
+  <section id="interests" class="content-section">
+    <h2>Interests</h2>
+    <div id="interestsContainer" class="chip-grid"></div>
   </section>
 
   <section id="contact" class="content-section contact">
     <h2>Contact</h2>
-    <p>Let’s collaborate on AI, automation, or cloud projects.</p>
+    <p>Let us collaborate on AI projects, software engineering challenges, or innovative ideas.</p>
+
+    <div class="contact-identity-grid">
+      <article class="identity-card">
+        <div class="identity-icon">&#9993;</div>
+        <div>
+          <p class="identity-label">Email</p>
+          <a class="identity-value" href="mailto:sanjaysabapathi8@gmail.com">sanjaysabapathi8@gmail.com</a>
+        </div>
+      </article>
+      <article class="identity-card">
+        <div class="identity-icon">&#9678;</div>
+        <div>
+          <p class="identity-label">Location</p>
+          <p class="identity-value">Chennai, India</p>
+        </div>
+      </article>
+    </div>
+
+    <form
+      id="contactForm"
+      class="contact-form"
+      action="https://formsubmit.co/sanjaysabapathi8@gmail.com"
+      method="POST"
+    >
+      <input type="text" name="_honey" autocomplete="off" tabindex="-1" class="hidden" aria-hidden="true">
+      <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://ssanjay.me/#contact">
+
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required placeholder="Your name">
+      </label>
+      <label>
+        <span>Your Email</span>
+        <input type="email" name="email" required placeholder="yourmail@example.com">
+      </label>
+      <label>
+        <span>Message</span>
+        <textarea name="message" rows="5" required placeholder="Write your message..."></textarea>
+      </label>
+      <button class="btn-primary" type="submit">Send Message</button>
+      <p id="contactFormMsg" class="contact-form-msg"></p>
+    </form>
+
     <div class="hero-actions">
-      <a class="btn-primary" href="mailto:youremail@example.com">Email Me</a>
-      <a class="btn-outline" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn-outline" href="https://www.linkedin.com/in/sanjay147/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn-outline" href="https://github.com/Sanjay14072005" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn-outline" href="https://leetcode.com/u/Sanjay_147/" target="_blank" rel="noopener noreferrer">LeetCode</a>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260315static5"></script>
+  <script src="data-store.js?v=20260315static5"></script>
+  <script src="portfolio-data.js?v=20260315static5"></script>
+  <script src="leetcode-live.js?v=20260315static5"></script>
 </body>
 </html>
