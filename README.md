@@ -200,3 +200,25 @@ Google Analytics is already connected in `index.html` using:
 
 - Custom domain: `ssanjay.me`
 - GitHub repo: `portfolio--website`
+
+## PEC Bot Chat Integration
+
+This repo now includes:
+
+- `chat.html` - full-screen chat page (`/chat`)
+- `chat.css` - full-screen chat styles
+- `chat.js` - full-screen chat logic
+- `widget.js` - floating widget on the main site
+- `widget.css` - widget styles
+- `chat-config.js` - single place for chatbot config (API URL, bot name, phone)
+- `netlify.toml` - maps `/chat` to `chat.html` on Netlify
+
+### Change only this when ngrok/Colab URL changes
+
+Open `chat-config.js` and update:
+
+```js
+apiBase: "https://your-new-ngrok-url.ngrok-free.app"
+```
+
+All chat calls (`/auth/token`, `/chat`, `/chat/history`) will use that base URL.

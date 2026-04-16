@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/chat"
+  to = "/chat.html"
+  status = 200

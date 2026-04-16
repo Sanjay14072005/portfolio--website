@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEC Bot | Chat</title>
+    <link rel="stylesheet" href="/chat.css" />
+  </head>
+  <body>
+    <div class="chat-shell">
+      <aside class="chat-side">
+        <h1 id="chat-side-bot-name">PEC Bot</h1>
+        <p id="chat-side-admission" class="chat-contact">Admission: +91- 90438 91272 / 90438 90983</p>
+        <p>Ask about admissions, programs, fees, hostel, placements, and campus facilities.</p>
+        <ul>
+          <li>Anonymous secure session (JWT)</li>
+          <li>Multi-turn conversation context</li>
+          <li>Conversation logged for analytics</li>
+        </ul>
+      </aside>
+
+      <main class="chat-main">
+        <header class="chat-top">
+          <div>
+            <strong id="chat-top-bot-name">PEC Bot - Full Chat</strong>
+            <small id="chat-top-admission" class="chat-top-admission">
+              Admission: +91- 90438 91272 / 90438 90983
+            </small>
+            <span id="chat-status">Connecting...</span>
+          </div>
+        </header>
+
+        <section id="chat-messages" class="chat-messages" aria-live="polite"></section>
+
+        <form id="chat-form" class="chat-form">
+          <input
+            id="chat-input"
+            type="text"
+            placeholder="Type your question..."
+            maxlength="2000"
+            autocomplete="off"
+          />
+          <button type="submit" id="chat-send">Send</button>
+        </form>
+      </main>
+    </div>
+
+    <script src="/chat-config.js"></script>
+    <script src="/chat.js"></script>
+  </body>
+</html>
