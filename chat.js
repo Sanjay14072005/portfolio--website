@@ -1,6 +1,10 @@
 (function startFullPageChat() {
   const config = window.PEC_CHAT_CONFIG || {};
   const apiBase = (config.apiBase || window.location.origin || "").replace(/\/+$/, "");
+  const endpoints = config.endpoints || {};
+  const authEndpoint = endpoints.authToken || "/auth/token";
+  const historyEndpoint = endpoints.history || "/chat/history?limit=50";
+  const chatEndpoint = endpoints.chat || "/chat";
   const botName = config.botName || "PEC Bot";
   const admissionPhone = config.admissionPhone || "+91- 90438 91272 / 90438 90983";
 
@@ -51,7 +55,7 @@
   }
 
   async function ensureSession() {
-    const response = await fetch(apiUrl("/auth/token"), {
+    const response = await fetch(apiUrl(authEndpoint), {
       method: "GET",
       credentials: "include"
     });
@@ -61,7 +65,7 @@
   }
 
   async function loadHistory() {
-    const response = await fetch(apiUrl("/chat/history?limit=50"), {
+    const response = await fetch(apiUrl(historyEndpoint), {
       method: "GET",
       credentials: "include"
     });
@@ -85,7 +89,7 @@
   }
 
   async function sendMessage(message) {
-    const response = await fetch(apiUrl("/chat"), {
+    const response = await fetch(apiUrl(chatEndpoint), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

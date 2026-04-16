@@ -1,7 +1,12 @@
 (function configurePecBot() {
   const defaults = {
-    apiBase: "https://guacamole-paddle-celtic.ngrok-free.dev",
-    chatPath: "/chat",
+    apiBase: window.location.origin,
+    endpoints: {
+      authToken: "/api/auth/token",
+      chat: "/api/chat",
+      history: "/api/chat/history"
+    },
+    chatPagePath: "/chat",
     openMode: "same-tab",
     widgetCssPath: "/widget.css",
     botName: "PEC Bot",

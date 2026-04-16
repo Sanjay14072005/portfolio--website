@@ -9,9 +9,12 @@
     document.currentScript || document.querySelector("script[src*='widget.js']:last-of-type");
   const scriptUrl = currentScript ? new URL(currentScript.src, window.location.href) : new URL(window.location.href);
 
+  const endpoints = config.endpoints || {};
   const apiBase = (currentScript?.dataset.apiBase || config.apiBase || scriptUrl.origin).replace(/\/+$/, "");
   const openMode = currentScript?.dataset.openMode || config.openMode || "same-tab";
-  const chatPath = currentScript?.dataset.chatPath || config.chatPath || "/chat";
+  const chatPath = currentScript?.dataset.chatPath || config.chatPagePath || "/chat";
+  const authEndpoint = currentScript?.dataset.authEndpoint || endpoints.authToken || "/auth/token";
+  const chatEndpoint = currentScript?.dataset.chatEndpoint || endpoints.chat || "/chat";
   const botName = currentScript?.dataset.botName || config.botName || "PEC Bot";
   const admissionPhone = currentScript?.dataset.admissionPhone || config.admissionPhone || "+91- 90438 91272 / 90438 90983";
   const cssHref = currentScript?.dataset.cssHref || config.widgetCssPath || `${scriptUrl.origin}/widget.css`;
@@ -96,7 +99,7 @@
   }
 
   async function ensureSession() {
-    const response = await fetch(apiUrl("/auth/token"), {
+    const response = await fetch(apiUrl(authEndpoint), {
       method: "GET",
       credentials: "include"
     });
@@ -122,7 +125,7 @@
   }
 
   async function sendMessage(message) {
-    const response = await fetch(apiUrl("/chat"), {
+    const response = await fetch(apiUrl(chatEndpoint), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

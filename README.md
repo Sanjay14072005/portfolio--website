@@ -210,15 +210,23 @@ This repo now includes:
 - `chat.js` - full-screen chat logic
 - `widget.js` - floating widget on the main site
 - `widget.css` - widget styles
-- `chat-config.js` - single place for chatbot config (API URL, bot name, phone)
-- `netlify.toml` - maps `/chat` to `chat.html` on Netlify
+- `chat-config.js` - widget/UI config (bot name, phone, endpoint paths)
+- `netlify.toml` - routes `/chat` and `/api/*` endpoints
+- `netlify/functions/*` - serverless proxy to Colab/ngrok model API
 
-### Change only this when ngrok/Colab URL changes
+### Change this when ngrok/Colab URL changes
 
-Open `chat-config.js` and update:
+Option 1 (recommended): set Netlify environment variable:
 
-```js
-apiBase: "https://your-new-ngrok-url.ngrok-free.app"
+```text
+MODEL_API_BASE=https://your-new-ngrok-url.ngrok-free.app
 ```
 
-All chat calls (`/auth/token`, `/chat`, `/chat/history`) will use that base URL.
+Option 2 (repo fallback): edit `netlify/functions/_model-config.js`:
+
+```js
+const DEFAULT_MODEL_API_BASE = "https://your-new-ngrok-url.ngrok-free.app";
+```
+
+The frontend calls `/api/auth/token`, `/api/chat`, and `/api/chat/history` on `ssanjay.me`,
+and Netlify functions proxy `/api/chat` to your Colab `/generate` endpoint.
